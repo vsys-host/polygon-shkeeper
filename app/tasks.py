@@ -142,7 +142,7 @@ def drain_account(self, symbol, account):
         inst = Coin(symbol)
         destination = inst.get_fee_deposit_account()
         results = inst.drain_account(account, destination)
-    elif symbol in config['TOKENS'][config["CURRENt_POLYGON_NETWORK"]].keys():
+    elif symbol in config['TOKENS'][config["CURRENT_POLYGON_NETWORK"]].keys():
         inst = Token(symbol)
         destination = inst.get_fee_deposit_account()
         results = inst.drain_tocken_account(account, destination)
