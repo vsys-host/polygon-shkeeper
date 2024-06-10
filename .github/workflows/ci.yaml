@@ -22,7 +22,7 @@ jobs:
             latest=false
           # list of Docker images to use as base name for tags
           images: |
-            vsyshost/matic-shkeeper
+            vsyshost/polygon-shkeeper
           # generate Docker tags based on the following events/attributes
           tags: |
             type=semver,pattern={{version}}
