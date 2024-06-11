@@ -42,7 +42,7 @@ config = {
     'MULTIPLIER': os.environ.get('MULTIPLIER', '1.3'),#multiply the max fee per gas, should be >1,
     'PAYOUT_MULTIPLIER': os.environ.get('PAYOUT_MULTIPLIER', '1.3'), #multiply the amount of gas for payout, should be >1,
     'PRICE_MULTIPLIER' : os.environ.get('PRICE_MULTIPLIER', '0.9'), #should be <1, used in payout in calc maxFeePerGas to avoid base price changing
-    'MAX_PRIORITY_FEE': os.environ.get('MAX_PRIORITY_FEE', '0.000000000017'), #in MATIC
+    'MAX_PRIORITY_FEE': os.environ.get('MAX_PRIORITY_FEE', '0.00000005'), #in MATIC
     'SLEEP_AFTER_SEEDING': os.environ.get('SLEEP_AFTER_SEEDING', 60), #in sec
     'ACCOUNT_PASSWORD' : os.environ.get('ACCOUNT_PASSWORD', "shkeeper"), #Password for restoring account in metamask or others, should be str
     'REDIS_HOST': os.environ.get('REDIS_HOST', 'localhost'),
