@@ -15,15 +15,19 @@ prometheus_client.REGISTRY.unregister(prometheus_client.PROCESS_COLLECTOR)
 
 
 def get_latest_release(name):
-    if name == 'bor':
-        url = 'https://api.github.com/repos/maticnetwork/bor/releases/latest'
-    else:
-        return False
-    data = requests.get(url).json()
-    version = data["tag_name"].split('v')[1]
-    info = { key:data[key] for key in ["name", "tag_name", "published_at"] }
-    info['version'] = version
-    return info
+    try:
+        if name == 'bor':
+            url = 'https://api.github.com/repos/maticnetwork/bor/releases/latest'
+        else:
+            return False
+        data = requests.get(url, timeout=10).json()
+        version = data["tag_name"].split('v')[1]
+        info = { key:data[key] for key in ["name", "tag_name", "published_at"] }
+        info['version'] = version
+        return info
+    except Exception as e:
+        import logging; logging.warning('get_latest_release(%s) failed: %s', name, e)
+        return {'name': 'unknown', 'tag_name': 'v0.0.0', 'published_at': '', 'version': '0.0.0'}
 
 def get_all_metrics():
     w3 = Web3(HTTPProvider(config["FULLNODE_URL"], request_kwargs={'timeout': int(config['FULLNODE_TIMEOUT'])}))
